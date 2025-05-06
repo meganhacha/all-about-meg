@@ -1,8 +1,10 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Contact = () => {
+    const navigate = useNavigate();
 
     const [status, setStatus] = useState("Send");
 
@@ -52,7 +54,8 @@ const Contact = () => {
             marginTop: '1vw'
         }}
         >
-        <Typography variant="h3" fontFamily={'Merriweather'} color={'rgb(75, 57, 51)'}>Contact Me</Typography>
+        <Typography variant="h3" fontFamily={'Merriweather'} color={'rgb(75, 57, 51)'}>Get in Touch</Typography>
+        <Typography variant="h5" fontFamily={'Merriweather'} color={'rgb(101, 75, 67)'}>Send me a message and I'll get back to you ASAP!</Typography>
         <TextField name="name" label="Your Name" required />
         <TextField name="email" label="Your Email" type="email" required />
         <TextField name="message" label="Your Message" multiline rows={4} required />
@@ -62,6 +65,14 @@ const Contact = () => {
             fontSize: '24px',
             background: 'rgb(105, 83, 75)',
         }}>{status}</Button>
+
+        <Button onClick={() => navigate('/')} sx={{
+                        height: '3rem',
+                        fontFamily: 'Karla',
+                        fontSize: '24px',
+                        background: 'rgb(105, 83, 75)',
+                        color: 'white'
+        }}>Home</Button>
         </Box>
     );
 };
