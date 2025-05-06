@@ -21,7 +21,7 @@ export default function Homepage() {
         <Box sx={styledMaster}>
             <Box>
             <Typography variant='h2' fontWeight={750} sx={styledText}>
-                Hello!
+                Hi there!
             </Typography>
             <Typography variant='h5' fontWeight={500} sx={styledText}>
                 Thanks for stopping by. Click any of the links below to see more!
@@ -38,7 +38,7 @@ export default function Homepage() {
             >
                 <HomeCard
                 title="About Me"
-                description="Learn a bit more about me and what I love doing."
+                description="Learn a bit more about me and what I'm up to at the moment."
                 route="/about"
                 />
 

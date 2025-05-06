@@ -51,7 +51,7 @@ const Contact = () => {
             boxShadow: 2,
             position: 'relative',
             left: '10%',
-            marginTop: '1vw'
+            marginTop: '3vw'
         }}
         >
         <Typography variant="h3" fontFamily={'Merriweather'} color={'rgb(75, 57, 51)'}>Get in Touch</Typography>
