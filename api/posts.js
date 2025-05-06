@@ -1,45 +1,31 @@
-import {MongoClient} from 'mongodb';
-
-const uri = process.env.MONGODB_URI;
-let cachedClient = null;
+import clientPromise from "../lib/mongodb";
 
 export default async function handler(req, res) {
-    if (!uri) {
-        return res.status(500).json({message: 'Missing MONGODB_URI'});
-    }
-
-    if (cachedClient) {
-        console.log('Using cached client');
-    } else {
-        console.log('Creating new client');
-        cachedClient = new MongoClient(uri);
-        await cachedClient.connect();
-    }
-
-    const db = cachedClient.db('perfume-info');
-    const postCollection = db.collection('review-posts');
+    const client = await clientPromise;
+    const db = client.db();
 
     if (req.method === 'GET') {
-        const data = await collection.find({}).toArray();
-        return res.status(200).json(data);
-    }
+        const posts = await db.collection('posts').find({}).sort({ date: -1}).toArray();
+        res.status(200).json(posts);
+    } else if (req.method === 'POST') {
+        const { title, slug, content, thumbnail, tags } = req.body;
 
-    if (req.method === 'POST') {
-
-        const { title, content} = req.body;
-
-        if (!title || !content) {
-            return res.status(400).json({ message: 'Title and content are required' });
+        if(!title || !slug || !content) {
+            return res.status(400).json({ error: 'Missing required fields' });
         }
 
-        const result = await postCollection.insertOne({
+        const result = await db.collection('posts').insertOne({
             title,
+            slug,
             content,
-            createdAt: new Date(),
+            tags: tags || [],
+            date: new Date(),
         });
 
-        return res.status(201).json(result.ops[0]);
+        res.status(201).json(result);
+    } else {
+        res.status(405).json({message: 'Method not allowed' });
     }
 
-    res.status(405).json({ message: 'Method not allowed'});
+
 }
