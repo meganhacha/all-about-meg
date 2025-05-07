@@ -46,8 +46,8 @@ export default function Blog() {
                         >
                             <CardMedia
                             component="img"
-                            height="180"
-                            image={post.thumbnail || '/images/default.jpg'}
+                            height="200"
+                            image={post.thumbnail || 'https://cdn.futura-sciences.com/buildsv6/images/wide1920/2/f/3/2f3c2b936a_50185294_ocean-plus-chaud.jpg'}
                             alt={post.title}
                             />
                             <CardContent>

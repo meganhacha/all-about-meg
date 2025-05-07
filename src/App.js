@@ -4,6 +4,7 @@ import AboutMe from  './pages/AboutMe';
 import Blog from './pages/Blog';
 import Contact from "./pages/Contact";
 import NewPost from "./pages/NewPost";
+import PostPage from "./pages/PostPage";
 import './App.css';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
         <Route path="/about" element={<AboutMe />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} /> 
-        <Route path="/newpost" element={<NewPost />} /> 
+        <Route path="/newpost" element={<NewPost />} />
+        <Route path="/blog/:slug" element={<PostPage />} />
       </Routes>
     </Router>
   );

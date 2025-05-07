@@ -15,8 +15,9 @@ export default async function handler(req, res) {
         }
 
         const result = await db.collection('posts').insertOne({
-            title,
             slug,
+            thumbnail,
+            title,
             content,
             tags: tags || [],
             date: new Date(),
