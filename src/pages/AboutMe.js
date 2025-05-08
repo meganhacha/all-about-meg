@@ -44,7 +44,7 @@ export default function AboutMe() {
 
 
             <Typography fontFamily={'Karla'} sx={{
-                fontSize: '1.5rem',
+                fontSize: '1.75rem',
                 padding: '10px',
                 paddingTop: '20px',
                 mt: 5,
@@ -54,13 +54,21 @@ export default function AboutMe() {
                 textAlign: 'center'
             }}>
                 Thanks for stopping by!
+                My name is Megan, and I'm a soon-to-be graduate of Purdue Fort Wayne's computer science program.
+                I've been able to touch on a handful of riveting topics throughout my time there, but I've found myself gravitating towards 2 languages the most: JavaScript and Python.
+                This very website was born from the desire to become more comfortable with React, JavaScript itself, and back-end programming.
+                Take a peek at the links below to see what I've been working on lately!
+
+                <div>
+                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha/Pylighter">Pylighter</a></p>
+                </div>
             </Typography> 
 
             <Typography fontFamily={'Karla'} sx={{
                 fontSize: '1.25rem',
                 fontWeight: 450,
                 textDecorationLine: 'underline'
-            }}>Currently Listening To:</Typography>
+            }}> Currently Listening To:</Typography>
             <iframe style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/playlist/5Xs5JT4xwUyT0vVHthD5xb?utm_source=generator" 
             width="100%" 
             height="352" 
