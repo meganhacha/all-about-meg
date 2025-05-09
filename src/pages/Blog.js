@@ -6,18 +6,20 @@ export default function Blog() {
     const [posts, setPosts] = useState([]);
     const [tokenInput, setTokenInput] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
+    const [showAddButton, setShowAddButton] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('api/posts')
+        fetch('/api/posts')
         .then((res) => res.json())
         .then(setPosts);
 
         const storedToken = localStorage.getItem('admin-token');
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
 
-        if (storedToken && storedToken === expectedToken) {
+        if (storedToken === expectedToken) {
             setIsAdmin(true);
+            setShowAddButton(true);
         }
 
     }, []);
@@ -28,6 +30,7 @@ export default function Blog() {
         if (tokenInput === expectedToken) {
             localStorage.setItem('admin-token', tokenInput);
             setIsAdmin(true);
+            window.location.reload();
         }
     }
 
@@ -78,7 +81,7 @@ export default function Blog() {
                 </>
             )}
 
-            {isAdmin && (
+            {showAddButton && (
                 <Button variant="outlined" onClick={() => navigate('/newpost')}>
                     Create New Post
                 </Button>

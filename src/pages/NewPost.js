@@ -29,9 +29,10 @@ export default function NewPost() {
     const handleAccess = () => {
         const expectedToken = import.meta.env.REACT_APP_POST_TOKEN;
 
-        if(token === expectedToken) {
+        if(token.trim() === expectedToken.trim()) {
             setHasAccess(true);
             localStorage.setItem('admin-token', token);
+            console.log('Using token: ', token);
             setStatus('');
         } else {
             setStatus('Invalid token');
