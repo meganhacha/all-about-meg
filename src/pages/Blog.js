@@ -86,6 +86,20 @@ export default function Blog() {
                     Create New Post
                 </Button>
             )}
+
+            {showAddButton && (
+                <Button variant="outlined" onClick={() => {
+                    const newToken = prompt('Enter a new token: ');
+                    if(newToken){
+                        localStorage.setItem('admin-token', newToken);
+                        window.location.reload();
+                    }
+                }}
+                >
+                    Change Token
+                </Button>
+            )
+        }
         </Box>
     </Box>
     );
