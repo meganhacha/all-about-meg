@@ -51,18 +51,13 @@ export default function NewPost() {
             e.preventDefault();
             setStatus('Sending...');
 
-            const response = await fetch('/api/posts', {
+            const response = await fetch('api/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({
-                    title: form.title,
-                    slug: form.slug,
-                    content: form.content,
-                    thumbnail: form.thumbnail,
-                }),
+                body: JSON.stringify(form),
             });
 
             if (response.ok) {
