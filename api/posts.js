@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         return res.status(403).json({ error: 'Unauthorized' });
       }
 
-      const { title, slug, content, thumbnail } = req.body;
+      const { title, slug, content, thumbnail, tags } = req.body;
       if (!title || !slug || !content) {
         console.warn('Missing fields');
         return res.status(400).json({ error: 'Missing required fields' });
@@ -34,6 +34,7 @@ export default async function handler(req, res) {
         content,
         thumbnail: thumbnail || '',
         date: new Date(),
+        tags: tags || ''
       });
 
       console.log('Inserted post:', result.insertedId);

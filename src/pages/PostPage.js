@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function PostPage() {
+    const navigate = useNavigate();
     const { slug } = useParams();
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [hasAccess, setHasAccess] = useState(false);
 
 
     useEffect(() => {
@@ -20,6 +23,12 @@ export default function PostPage() {
             console.error(err);
             setLoading(false);
         });
+
+        const storedToken = localStorage.getItem('admin-token');
+        const expectedToken = process.env.REACT_APP_POST_TOKEN;
+        if (storedToken && storedToken === expectedToken) {
+            setHasAccess(true);
+        }
     }, [slug]);
 
     if (loading) {
@@ -39,12 +48,12 @@ export default function PostPage() {
     }
 
     return (
-        <Box sx={{ maxWidth: 1000, mx: 'auto', pt: 6, px: 3, backgroundColor: 'white'}}>
+        <Box sx={{ maxWidth: 1000, mx: 'auto', pt: 6, px: 3}}>
             <Typography variant="h4" fontFamily={'Merriweather'} gutterBottom>
                 {post.title}
             </Typography>
 
-            <Typography variant="body2">
+            <Typography sx={{fontFamily: 'Karla', fontSize: '1rem'}}>
                 {new Date(post.date).toLocaleDateString()}
             </Typography>
 
@@ -56,9 +65,23 @@ export default function PostPage() {
                 />
             )}
 
-            <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap'}}>
+            <Box>
+            <Typography sx={{ whiteSpace: 'pre-wrap', fontFamily: 'Karla', fontSize: '1rem', mt: '5%'}}>
                 {post.content}
             </Typography>
+
+            <Typography sx={{fontFamily: 'Karla', fontSize: '.75rem', pt: '5%'}}>
+                Tagged: {post.tags?.join(', ')}
+            </Typography>
+            </Box>
+
+            <Button variant='outlined' onClick={() => navigate('/blog')}>Back</Button>
+
+            {hasAccess && (
+                <Button onClick={() => navigate(`/edit/${post.slug}`)}>
+                    Edit Post
+                </Button>
+            )}
         </Box>
     )
 

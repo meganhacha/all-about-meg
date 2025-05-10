@@ -36,7 +36,7 @@ export default function Blog() {
 
     return(
         <Box sx={{ px: 3, py: 4, maxWidth: 1200, mx: 'auto'}}>
-            <Typography variant="h3" align="center" gutterBottom>
+            <Typography sx={{fontFamily: 'Merriweather', fontSize: '3rem', fontWeight: 700, mb: '1.5rem' }} align="center" gutterBottom>
                 Posts
             </Typography>
 
@@ -82,7 +82,7 @@ export default function Blog() {
             )}
 
             {showAddButton && (
-                <Button variant="outlined" onClick={() => navigate('/newpost')}>
+                <Button variant="outlined" onClick={() => navigate('/post')}>
                     Create New Post
                 </Button>
             )}
@@ -100,6 +100,8 @@ export default function Blog() {
                 </Button>
             )
         }
+
+        <Button variant='outlined' onClick={() => navigate('/')}>Home</Button>
         </Box>
     </Box>
     );

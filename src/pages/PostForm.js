@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, TextField, Typography, Alert } from '@mui/material';
-import { LocalSeeOutlined } from '@mui/icons-material';
+import { useParams } from 'react-router-dom';
 
 
-export default function NewPost() {
+export default function PostForm() {
+    const { slug } = useParams();
+    const isEdit = !!slug;
     const [token, setToken] = useState('');
     const [hasAccess, setHasAccess] = useState(false);
     const [form, setForm] = useState( {
         title: '',
         slug: '',
         content: '',
-        thumbnail: ''
+        thumbnail: '',
+        tags: [],
     });
 
     const [status, setStatus] = useState('');
@@ -26,6 +29,67 @@ export default function NewPost() {
         }
     }, []);
 
+
+    useEffect(() => {
+        
+        if(!isEdit) return;
+
+        if (slug) {
+            fetch(`/api/posts/${slug}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setForm({
+                    title: data.title,
+                    slug: data.slug,
+                    content: data.content,
+                    thumbnail: data.thumbnail,
+                    tagsIn: data.tags.join(', '),
+                });
+            });
+        }
+    }, [slug]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const tags = form.tagsIn
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+
+        const payload = {
+            title: form.title,
+            slug: form.slug,
+            content: form.content,
+            thumbnail: form.thumbnail,
+            tags,
+        };
+
+        const method = isEdit ? 'PUT' : 'POST';
+        const endpt = isEdit ? `/api/posts/${slug}` : '/api/posts';
+
+        const res = await fetch(endpt, {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (res.ok){
+            navigate('/blog');
+        }
+    };
+
     const handleAccess = () => {
         const expectedToken = import.meta.env.REACT_APP_POST_TOKEN;
 
@@ -36,38 +100,36 @@ export default function NewPost() {
             setStatus('');
         } else {
             setStatus('Invalid token');
-        }
+        };
     }
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setForm((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-        };
+        // const handleSubmit = async (e) => {
+        //     e.preventDefault();
+        //     setStatus('Sending...');
 
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-            setStatus('Sending...');
+        //     const tags = form.tagsIn?.split(',')
+        //     .map((tag) => tag.trim())
+        //     .filter(tag => tag !== '');
 
-            const response = await fetch('api/posts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(form),
-            });
+        //     form.tags = tags;
 
-            if (response.ok) {
-                setStatus('Post created!');
-                setForm({ title: '', slug: '', content: '', thumbnail: '' });
-            }else {
-                const err = await response.json();
-                setStatus(`Failed: ${err.error || 'Unknown Error'}`);
-            }
-        };
+        //     const response = await fetch('api/posts', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             Authorization: `Bearer ${token}`,
+        //         },
+        //         body: JSON.stringify(form),
+        //     });
+
+        //     if (response.ok) {
+        //         setStatus('Post created!');
+        //         setForm({ title: '', slug: '', content: '', thumbnail: '' });
+        //     }else {
+        //         const err = await response.json();
+        //         setStatus(`Failed: ${err.error || 'Unknown Error'}`);
+        //     }
+        // };
 
 
         return (
@@ -126,10 +188,24 @@ export default function NewPost() {
                         value={form.content}
                         onChange={handleChange}
                         sx={{ mb: 2}}
+                        multiline rows={4}
+                        />
+
+                        <TextField
+                        label="Tags (separate with commas)"
+                        name="tags"
+                        fullWidth
+                        value={form.tagsIn || ''}
+                        onChange={(e) => {
+                            setForm((prev) => ({
+                                ...prev,
+                                tagsIn: e.target.value,
+                            }))
+                        }}
                         />
 
                         <Button type="submit" variant="contained">
-                            Submit
+                            {isEdit ? 'Update Post' : 'Create Post'}
                         </Button>
                         {status && <Alert sx={{ mt: 2}}>{status}</Alert>}
                     </form>
