@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, TextField, Typography, Alert } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import TiptapEditor from '../components/TiptapEditor';
 
 
 export default function PostForm() {
@@ -103,35 +104,6 @@ export default function PostForm() {
         };
     }
 
-        // const handleSubmit = async (e) => {
-        //     e.preventDefault();
-        //     setStatus('Sending...');
-
-        //     const tags = form.tagsIn?.split(',')
-        //     .map((tag) => tag.trim())
-        //     .filter(tag => tag !== '');
-
-        //     form.tags = tags;
-
-        //     const response = await fetch('api/posts', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify(form),
-        //     });
-
-        //     if (response.ok) {
-        //         setStatus('Post created!');
-        //         setForm({ title: '', slug: '', content: '', thumbnail: '' });
-        //     }else {
-        //         const err = await response.json();
-        //         setStatus(`Failed: ${err.error || 'Unknown Error'}`);
-        //     }
-        // };
-
-
         return (
             <Box sx={{maxWidth: 600, mx: 'auto', mt: 6, px: 3}}>
                 {!hasAccess ? (
@@ -181,15 +153,20 @@ export default function PostForm() {
                         sx={{ mb: 2}}
                         />
 
-                        <TextField
-                        label="Content"
-                        name="content"
-                        fullWidth
-                        value={form.content}
-                        onChange={handleChange}
-                        sx={{ mb: 2}}
-                        multiline rows={4}
-                        />
+                        <Box sx={{ mb: 2}}>
+                            <Typography variant='subtitle1'>
+                                Content
+                            </Typography>
+                            <TiptapEditor
+                            value={form.content}
+                            onChange={(value) =>
+                                setForm((prev) => ({
+                                    ...prev,
+                                    content: value,
+                                }))
+                                }
+                            />
+                        </Box>
 
                         <TextField
                         label="Tags (separate with commas)"
@@ -204,10 +181,10 @@ export default function PostForm() {
                         }}
                         />
 
-                        <Button type="submit" variant="contained">
+                        <Button type="submit" sx={{ mt: 2}}>
                             {isEdit ? 'Update Post' : 'Create Post'}
                         </Button>
-                        {status && <Alert sx={{ mt: 2}}>{status}</Alert>}
+                        {status && <Alert sx={{ mt: 2 }}>{status}</Alert>}
                     </form>
                 )}
                 <Button onClick={() => navigate('/blog')}>Back to Blog Page</Button>

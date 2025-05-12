@@ -57,10 +57,12 @@ export default function AboutMe() {
                 My name is Megan, and I'm a soon-to-be graduate of Purdue Fort Wayne's computer science program.
                 I've been able to touch on a handful of riveting topics throughout my time there, but I've found myself gravitating towards 2 languages the most: JavaScript and Python.
                 This very website was born from the desire to become more comfortable with React, JavaScript itself, and back-end programming.
-                Take a peek at the links below to see what I've been working on lately!
+                Click any of the links below to contact me elsewhere!
 
                 <div>
-                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha/Pylighter">Pylighter</a></p>
+                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha">GitHub</a></p>
+                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://www.linkedin.com/in/megan-hacha/">LinkedIn</a></p>
+                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
                 </div>
             </Typography> 
 

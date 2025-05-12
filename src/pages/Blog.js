@@ -82,7 +82,7 @@ export default function Blog() {
             )}
 
             {showAddButton && (
-                <Button variant="outlined" onClick={() => navigate('/post')}>
+                <Button variant="outlined" onClick={() => navigate('/create')}>
                     Create New Post
                 </Button>
             )}
