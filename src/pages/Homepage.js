@@ -21,7 +21,7 @@ export default function Homepage() {
         <Box sx={styledMaster}>
             <Box>
             <Typography variant='h2' fontWeight={750} sx={styledText}>
-                Hi there!
+                Hello!
             </Typography>
             <Typography variant='h5' fontWeight={500} sx={styledText}>
                 Thanks for stopping by. Click any of the links below to see more!

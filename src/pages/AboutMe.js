@@ -53,7 +53,7 @@ export default function AboutMe() {
                 fontWeight: 450,
                 textAlign: 'center'
             }}>
-                Thanks for stopping by!
+                Howdy!
                 My name is Megan, and I'm a soon-to-be graduate of Purdue Fort Wayne's computer science program.
                 I've been able to touch on a handful of riveting topics throughout my time there, but I've found myself gravitating towards 2 languages the most: JavaScript and Python.
                 This very website was born from the desire to become more comfortable with React, JavaScript itself, and back-end programming.
