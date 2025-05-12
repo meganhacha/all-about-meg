@@ -65,9 +65,9 @@ export default function PostPage() {
             )}
 
             <Box>
-            <Typography sx={{ whiteSpace: 'pre-wrap', fontFamily: 'Karla', fontSize: '1rem', mt: '5%'}}>
-                {post.content}
-            </Typography>
+            <Box dangerouslySetInnerHTML={{ __html: post.content}}
+                sx={{ whiteSpace: 'pre-wrap', fontFamily: 'Karla', fontSize: '1rem', mt: '5%'}}
+            />
 
             <Typography sx={{fontFamily: 'Karla', fontSize: '.75rem', pt: '5%'}}>
                 Tagged: {post.tags?.join(', ')}
