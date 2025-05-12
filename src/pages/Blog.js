@@ -65,7 +65,7 @@ export default function Blog() {
             </Grid>
 
 
-            <Box mt={4} textAlign="center">
+            <Box mt={4} textAlign="center" display="flex" flexDirection="column" gap={2} width="50%" pl="25%">
             {!isAdmin && (
                 <>
                 <TextField
@@ -75,20 +75,20 @@ export default function Blog() {
                 onChange={(e) => setTokenInput(e.target.value)}
                 sx={{ mb: 1}}
                 />
-                <Button variant="outlined" onClick={handleTokenSubmit}>
+                <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white' }} onClick={handleTokenSubmit}>
                     Log In as Admin
                 </Button>
                 </>
             )}
 
             {showAddButton && (
-                <Button variant="outlined" onClick={() => navigate('/create')}>
+                <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white' }} onClick={() => navigate('/create')}>
                     Create New Post
                 </Button>
             )}
 
             {showAddButton && (
-                <Button variant="outlined" onClick={() => {
+                <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white'}} onClick={() => {
                     const newToken = prompt('Enter a new token: ');
                     if(newToken){
                         localStorage.setItem('admin-token', newToken);
@@ -101,7 +101,7 @@ export default function Blog() {
             )
         }
 
-        <Button variant='outlined' onClick={() => navigate('/')}>Home</Button>
+        <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white' }} onClick={() => navigate('/')}>Home</Button>
         </Box>
     </Box>
     );

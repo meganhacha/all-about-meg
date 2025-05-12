@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function PostPage() {
+    const storedToken = localStorage.getItem('admin-token');
     const navigate = useNavigate();
     const { slug } = useParams();
     const [post, setPost] = useState(null);
@@ -22,9 +23,7 @@ export default function PostPage() {
         .catch((err) => {
             console.error(err);
             setLoading(false);
-        });
-
-        const storedToken = localStorage.getItem('admin-token');
+        }); 
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
         if (storedToken && storedToken === expectedToken) {
             setHasAccess(true);
@@ -75,11 +74,34 @@ export default function PostPage() {
             </Typography>
             </Box>
 
-            <Button variant='outlined' onClick={() => navigate('/blog')}>Back</Button>
+            <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white', m: '10px', fontFamily: 'Karla'}} onClick={() => navigate('/blog')}>Back</Button>
 
             {hasAccess && (
-                <Button onClick={() => navigate(`/edit/${post.slug}`)}>
+                <Button sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white', m: '10px', fontFamily: 'Karla' }} onClick={() => navigate(`/edit/${post.slug}`)}>
                     Edit Post
+                </Button>
+            )}
+
+            {hasAccess && (
+                <Button onClick={async () => {
+                    if(window.confirm('Are you sure you would like to delete this post?')) {
+                        const res = await fetch(`/api/posts/${post.slug}`, {
+                            method: 'DELETE',
+                            headers: {
+                                Authorization: `Bearer ${storedToken}`,
+                            },
+                        });
+
+                        if (res.ok) {
+                            navigate('/blog');
+                        } else {
+                            alert('Failed to delete post');
+                        }
+                    }
+                }}
+                sx={{ backgroundColor: 'rgb(105, 83, 75)', color: 'white', fontFamily: 'Karla', m: '10px'}}
+                >
+                    Delete Post
                 </Button>
             )}
         </Box>

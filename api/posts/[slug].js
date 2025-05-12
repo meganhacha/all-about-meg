@@ -56,8 +56,27 @@ export default async function handler(req, res) {
             res.status(500).json({ error: 'Failed to update post '});
         }
     }
+    else if (req.method === 'DELETE') {
+        const token = req.headers.authorization?.split(' ')[1];
+
+        if (token !== process.env.POST_TOKEN) {
+            return res.status(403).json({ error: 'Unauthorized'});
+        }
+
+        try {
+            const result = await db.collection('posts').deleteOne({ slug });
+
+            if (result.deletedCount === 0) {
+                return res.status(404).json({ error: 'Post not found'});
+            }
+
+            return res.status(200).json({ message: 'Post deleted'});
+        } catch (err) {
+            return res.status(500).json({ error: 'Failed to delete post'});
+        }
+    }
     else {
-        res.setHeader('Allow', ['GET', 'PUT']);
+        res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
         res.status(405).end(`$Method ${req.method} Not Allowed`);
     }
 }

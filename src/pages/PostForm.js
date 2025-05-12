@@ -181,13 +181,13 @@ export default function PostForm() {
                         }}
                         />
 
-                        <Button type="submit" sx={{ mt: 2}}>
+                        <Button type="submit" sx={{ mt: 2, backgroundColor: 'rgb(105, 83, 75)', color: 'white'}}>
                             {isEdit ? 'Update Post' : 'Create Post'}
                         </Button>
                         {status && <Alert sx={{ mt: 2 }}>{status}</Alert>}
                     </form>
                 )}
-                <Button onClick={() => navigate('/blog')}>Back to Blog Page</Button>
+                <Button sx={{ mt: 2, backgroundColor: 'rgb(105, 83, 75)', color: 'white' }}onClick={() => navigate('/blog')}>Back to Blog Page</Button>
             </Box>
         );
     }
