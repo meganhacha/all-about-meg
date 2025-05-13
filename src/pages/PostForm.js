@@ -60,11 +60,17 @@ export default function PostForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let tags = [];
 
-        const tags = form.tagsIn
+        if(form.tagsIn && form.tagsIn.trim() !== ''){    
+
+        tags = form.tagsIn
         .split(',')
         .map((tag) => tag.trim())
         .filter(Boolean);
+
+    }
+
 
         const payload = {
             title: form.title,

@@ -38,19 +38,19 @@ export default function Homepage() {
             >
                 <HomeCard
                 title="About Me"
-                description="Learn a bit more about me and what I'm up to at the moment."
+                description="Who I am, what I do, and even what I'm listening to."
                 route="/about"
                 />
 
                 <HomeCard
                 title="Blog"
-                description="Perfume reviews and various other things from my mind."
+                description="An ongoing collection of whatever I've been thinking about lately."
                 route="/blog"
                 />
 
                 <HomeCard
                 title="Contact"
-                description="Share your thoughts with yours truly."
+                description="Reach out for questions, answers, or just to connect."
                 route="/contact"
                 />
 

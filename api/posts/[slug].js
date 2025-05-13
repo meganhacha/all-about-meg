@@ -41,7 +41,6 @@ export default async function handler(req, res) {
                         content,
                         thumbnail,
                         tags,
-                        date: new Date().toLocaleDateString(), 
                     },
                 }
             );

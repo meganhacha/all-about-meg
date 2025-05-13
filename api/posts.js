@@ -8,7 +8,10 @@ export default async function handler(req, res) {
     const db = client.db('posts');
 
     if (req.method === 'GET') {
-      const posts = await db.collection('posts').find({}).toArray();
+      const posts = await db.collection('posts')
+      .find({})
+      .sort({date: 1})
+      .toArray();
       console.log('Fetched posts:', posts.length);
       return res.status(200).json(posts);
     }
