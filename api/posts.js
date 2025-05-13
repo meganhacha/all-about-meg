@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         slug,
         content,
         thumbnail: thumbnail || '',
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
         tags: tags || ''
       });
 

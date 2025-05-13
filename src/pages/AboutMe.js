@@ -54,10 +54,10 @@ export default function AboutMe() {
                 textAlign: 'center'
             }}>
                 Howdy!
-                My name is Megan, and I'm a soon-to-be graduate of Purdue Fort Wayne's computer science program.
+                My name is Megan, and I'm a recent graduate of Purdue Fort Wayne's computer science program.
                 I've been able to touch on a handful of riveting topics throughout my time there, but I've found myself gravitating towards 2 languages the most: JavaScript and Python.
                 This very website was born from the desire to become more comfortable with React, JavaScript itself, and back-end programming.
-                Click any of the links below to contact me elsewhere!
+                Click any of the links below to see check out what I've been up to!
 
                 <div>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha">GitHub</a></p>
