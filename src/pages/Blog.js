@@ -1,9 +1,11 @@
-import { Box, Button, Card, CardMedia, CardContent, Typography, Grid, TextField } from '@mui/material';
+import { Box, Button, Card, CardMedia, CardContent, Typography, Grid, TextField, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export default function Blog() {
     const [posts, setPosts] = useState([]);
+    const [allTags, setAllTags] = useState([]);
+    const [selectedTag, setSelectedTag] = useState('');
     const [tokenInput, setTokenInput] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [showAddButton, setShowAddButton] = useState(false);
@@ -13,6 +15,10 @@ export default function Blog() {
         fetch('/api/posts')
         .then((res) => res.json())
         .then(setPosts);
+
+        fetch('/api/posts?tagsOnly=true')
+        .then((res) => res.json())
+        .then(setAllTags);
 
         const storedToken = localStorage.getItem('admin-token');
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
@@ -34,16 +40,40 @@ export default function Blog() {
         }
     }
 
+    const visiblePosts = selectedTag ? posts.filter((post) => post.tags?.includes(selectedTag)) : posts;
+
     return(
         <Box sx={{ px: 3, py: 4, maxWidth: 1200, mx: 'auto'}}>
             <Typography sx={{fontFamily: 'Merriweather', fontSize: '3rem', fontWeight: 700, mb: '1.5rem' }} align="center" gutterBottom>
                 Posts
             </Typography>
 
+            <FormControl sx={{minWidth: '100px', pb: '1rem'}}>
+                <InputLabel>Filter by Tag</InputLabel>
+                <Select
+                    value={selectedTag}
+                    onChange={(e) => {
+                        setSelectedTag(e.target.value)
+                    }}
+                    label="Filter by Tag"
+                >
+
+                    <MenuItem value="">
+                        All
+                    </MenuItem>
+                    {allTags.map((tag, idx) => (
+                        <MenuItem key={idx} value={tag}>
+                            {tag}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+
             <Grid container spacing={3}>
-                {posts.map((post) => (
+                {visiblePosts.map((post) => (
                     <Grid item xs={12} sm={6} md={4} key={post._id}>
                         <Card
+                        key={post.slug}
                         sx={{ cursor: 'pointer', height: '100%'}}
                         onClick={() => navigate(`/blog/${post.slug}`)}
                         >

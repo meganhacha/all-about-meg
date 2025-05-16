@@ -8,6 +8,13 @@ export default async function handler(req, res) {
     const db = client.db('posts');
 
     if (req.method === 'GET') {
+      const onlyTags = req.query.tagsOnly === 'true';
+
+      if(onlyTags) {
+        const tags = await db.collection('posts').distinct('tags');
+        return res.status(200).json(tags);
+      }
+
       const posts = await db.collection('posts')
       .find({})
       .sort({date: 1})
