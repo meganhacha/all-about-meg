@@ -1,8 +1,10 @@
 import { Box, Typography, Avatar, Divider, Button} from '@mui/material';
 import { Image } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function AboutMe() {
+    const navigate = useNavigate();
 
     return (
         <Box sx={{
@@ -53,13 +55,20 @@ export default function AboutMe() {
                 fontWeight: 450,
                 textAlign: 'center'
             }}>
-                Howdy! I'm Megan, a recent computer science graduate from Purdue Fort Wayne. While I've explored a wide range of topics, I've found myself most at home with JavaScript and Python.
-                This site was born out of my desire to deepen my comfort with React, level up my backend skills, and have a space to explore my technical and personal interests. Feel free to click around to see what I've been working on (or thinking about).
+                Hi! I'm Megan, a recent computer science graduate from Purdue Fort Wayne. While I've explored a wide range of topics, I've found myself most at home with web development and lanugages like Python.
+                This site was born out of my desire to deepen my comfort with React, improve my backend skills, and have a space to explore my technical and personal interests. Feel free to click around to see what I've been working on or how I'm spending my free time.
 
                 <div>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha">GitHub</a></p>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://www.linkedin.com/in/megan-hacha/">LinkedIn</a></p>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
+                <Button onClick={() => navigate('/')} sx={{
+                    backgroundColor: 'rgb(105, 83, 75)',
+                    mt: '1rem',
+                    color: 'white'
+                }}>
+                    Home
+                </Button>
                 </div>
             </Typography> 
 
