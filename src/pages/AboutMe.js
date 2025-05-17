@@ -64,7 +64,7 @@ export default function AboutMe() {
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
                 <Button onClick={() => navigate('/')} sx={{
                     backgroundColor: 'rgb(105, 83, 75)',
-                    mt: '1rem',
+                    mt: '3rem',
                     color: 'white'
                 }}>
                     Home
@@ -77,9 +77,10 @@ export default function AboutMe() {
                 fontWeight: 450,
                 textDecorationLine: 'underline'
             }}> Currently Listening To:</Typography>
-            <iframe style={{borderRadius: '12px'}} src="https://open.spotify.com/embed/playlist/5Xs5JT4xwUyT0vVHthD5xb?utm_source=generator" 
+            <iframe src="https://open.spotify.com/embed/playlist/5Xs5JT4xwUyT0vVHthD5xb?utm_source=generator&theme=0" 
             width="100%" 
-            height="352" 
+            height="152" 
+            allowfullscreen="" 
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
             loading="lazy"></iframe>
 
