@@ -21,6 +21,7 @@ export default function PostForm() {
     const [status, setStatus] = useState('');
     const navigate = useNavigate();
 
+    /* Token check is back, checks for my session's admin status. */
     useEffect(() => {
         const storedToken = localStorage.getItem('admin-token');
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
@@ -35,6 +36,8 @@ export default function PostForm() {
         
         if(!isEdit) return;
 
+         /* If there is a matching slug for editing, then make the changes
+            to the corresponding slug. */
         if (slug) {
             fetch(`/api/posts/${slug}`)
             .then((res) => res.json())

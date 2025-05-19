@@ -12,14 +12,17 @@ export default function Blog() {
     const navigate = useNavigate();
 
     useEffect(() => {
+    {/* Basic fetch for intial page load */}
         fetch('/api/posts')
         .then((res) => res.json())
         .then(setPosts);
 
+    {/* If a filter is applied, then fetch those with the corresponding tags. */}
         fetch('/api/posts?tagsOnly=true')
         .then((res) => res.json())
         .then(setAllTags);
 
+    {/* The current token is checked on page load and verifies admin status. */}
         const storedToken = localStorage.getItem('admin-token');
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
 
@@ -33,6 +36,7 @@ export default function Blog() {
     const handleTokenSubmit = () => {
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
 
+    { /* If the token entered matches the one listed as the admin token, the user (me) can post, edit, and delete. */}
         if (tokenInput === expectedToken) {
             localStorage.setItem('admin-token', tokenInput);
             setIsAdmin(true);
@@ -40,14 +44,17 @@ export default function Blog() {
         }
     }
 
+    { /* Create an array of corresponding posts based on the selected tag or lack thereof. */}
     const visiblePosts = selectedTag ? posts.filter((post) => post.tags?.includes(selectedTag)) : posts;
 
     return(
-        <Box sx={{ px: 3, py: 4, maxWidth: 1200, mx: 'auto'}}>
+        <Box sx={{ px: 3, py: 4, maxWidth: 900, mx: 'auto'}}>
             <Typography sx={{fontFamily: 'Merriweather', fontSize: '3rem', fontWeight: 700, mb: '1.5rem' }} align="center" gutterBottom>
                 Posts
             </Typography>
 
+
+        {/* Choosing a tag from the drop-down box will recreate the array of visible posts with only those that have the tag.  */}
             <FormControl sx={{minWidth: '100px', pb: '1rem'}}>
                 <InputLabel>Filter by Tag</InputLabel>
                 <Select
@@ -77,6 +84,10 @@ export default function Blog() {
                         sx={{ cursor: 'pointer', height: '100%'}}
                         onClick={() => navigate(`/blog/${post.slug}`)}
                         >
+
+                        {/* The card is set up to either have the image of the link provided at creation, or the default.
+                            However, it's worth noting that throwing any text in there will cause issues but act like it's functional.
+                            This will need to be fixed so I can check for a correct image path.  */}
                             <CardMedia
                             component="img"
                             height="200"

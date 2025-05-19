@@ -36,6 +36,9 @@ export default function Homepage() {
                     gap: '2rem'
                 }}
             >
+
+            { /* There are currently 3 cards. I intend to add maybe one or two more, but I'm
+                 not sure what they will be exactly. */}
                 <HomeCard
                 title="About Me"
                 description="Who I am, what I do, and even what I'm listening to."
