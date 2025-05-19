@@ -55,7 +55,7 @@ export default function Blog() {
 
 
         {/* Choosing a tag from the drop-down box will recreate the array of visible posts with only those that have the tag.  */}
-            <FormControl sx={{minWidth: '100px', pb: '1rem'}}>
+            <FormControl sx={{minWidth: '100px', pb: '.25rem'}}>
                 <InputLabel>Filter by Tag</InputLabel>
                 <Select
                     value={selectedTag}

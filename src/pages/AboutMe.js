@@ -9,7 +9,7 @@ export default function AboutMe() {
     return (
         <Box sx={{
             maxWidth: 800,
-            minHeight: '100vh',
+            minHeight: '80vh',
             mx: 'auto',
             mt: 2,
             px: 3,
@@ -21,7 +21,7 @@ export default function AboutMe() {
             <Avatar
                 alt="Megan Hacha"
                 src="/Me(gan).jpeg"
-                sx={{width: 255, height: 255}}/>
+                sx={{width: 200, height: 200}}/>
 
             <Box sx={{
                 backgroundColor: 'rgb(253, 250, 244)',
@@ -34,7 +34,7 @@ export default function AboutMe() {
 
             <Typography fontFamily={'Merriweather'} sx= {{
                 textAlign: 'center',
-                fontSize: '2.5rem',
+                fontSize: '2rem',
                 fontWeight: 750
             }}>Megan Hacha</Typography>
 
@@ -48,7 +48,7 @@ export default function AboutMe() {
 
 
             <Typography fontFamily={'Karla'} sx={{
-                fontSize: '1.75rem',
+                fontSize: '1rem',
                 padding: '10px',
                 paddingTop: '20px',
                 mt: 5,
@@ -64,6 +64,8 @@ export default function AboutMe() {
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha">GitHub</a></p>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://www.linkedin.com/in/megan-hacha/">LinkedIn</a></p>
                 <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
+
+        {/* Temporary button location until I can figure out appropriate placement. */}
                 <Button onClick={() => navigate('/')} sx={{
                     backgroundColor: 'rgb(105, 83, 75)',
                     mt: '3rem',
