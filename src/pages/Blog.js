@@ -53,7 +53,8 @@ export default function Blog() {
 
     return(
         <Box sx={{ px: 3, py: 4, maxWidth: 900, mx: 'auto'}}>
-            <h1 className='page-title'>Posts
+            <h1 className='page-title'>
+                Posts
             </h1>
 
 
