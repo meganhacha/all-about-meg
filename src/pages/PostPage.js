@@ -28,6 +28,7 @@ export default function PostPage() {
         if (storedToken && storedToken === expectedToken) {
             setHasAccess(true);
         }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug]);
 
     if (loading) {

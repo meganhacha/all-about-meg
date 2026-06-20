@@ -51,6 +51,7 @@ export default function PostForm() {
                 });
             });
         }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug]);
 
     const handleChange = (e) => {
