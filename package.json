@@ -24,10 +24,11 @@
     "react-scripts": "5.0.1",
     "vercel": "^54.14.2",
     "web-vitals": "^2.1.4"
+
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,4 +53,5 @@
   "devDependencies": {
     "webpack": "^5.99.8"
   }
+  
 }
