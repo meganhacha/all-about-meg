@@ -5,6 +5,7 @@ import Blog from './pages/Blog';
 import Contact from "./pages/Contact";
 import PostForm from "./pages/PostForm";
 import PostPage from "./pages/PostPage";
+import Projects from "./pages/Projects";
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/blog/:slug" element={<PostPage />} /> 
         <Route path="/create" element={<PostForm />} />
         <Route path="/edit/:slug" element={<PostForm />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </Router>
   );

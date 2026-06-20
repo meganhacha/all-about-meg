@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page-title {
+  font-family: 'Merriweather';
+  text-align: 'center';
+  font-size: '2rem';
+  font-weight: 750;
+}

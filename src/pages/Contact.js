@@ -1,6 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './pageFormats.css';
 
 
 const Contact = () => {
@@ -45,7 +46,7 @@ const Contact = () => {
             flexDirection: 'column',
             background: 'white',
             maxWidth: '80%',
-            gap: 5,
+            gap: 3,
             padding: 3,
             borderRadius: 2,
             boxShadow: 2,
@@ -54,8 +55,8 @@ const Contact = () => {
             marginTop: '3vw'
         }}
         >
-        <Typography variant="h3" fontFamily={'Merriweather'} color={'rgb(75, 57, 51)'}>Get in Touch</Typography>
-        <Typography variant="h5" fontFamily={'Merriweather'} color={'rgb(101, 75, 67)'}>Send me a message and I'll get back to you ASAP!</Typography>
+        <h1 className='contact-form-title'>Get in Touch</h1>
+        <h3 className='contact-form-subtitle'>Send me a message and I'll get back to you ASAP!</h3>
         <TextField name="name" label="Your Name" required />
         <TextField name="email" label="Your Email" type="email" required />
         <TextField name="message" label="Your Message" multiline rows={4} required />

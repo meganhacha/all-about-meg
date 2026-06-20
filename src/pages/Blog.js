@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardMedia, CardContent, Typography, Grid, TextField, Select, FormControl, InputLabel, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './pageFormats.css';
 
 export default function Blog() {
     const [posts, setPosts] = useState([]);
@@ -52,9 +53,8 @@ export default function Blog() {
 
     return(
         <Box sx={{ px: 3, py: 4, maxWidth: 900, mx: 'auto'}}>
-            <Typography sx={{fontFamily: 'Merriweather', fontSize: '3rem', fontWeight: 700, mb: '1.5rem' }} align="center" gutterBottom>
-                Posts
-            </Typography>
+            <h1 className='page-title'>Posts
+            </h1>
 
 
         {/* Choosing a tag from the drop-down box will recreate the array of visible posts with only those that have the tag.  */}

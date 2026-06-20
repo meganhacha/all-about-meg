@@ -57,6 +57,12 @@ export default function Homepage() {
                 route="/contact"
                 />
 
+                <HomeCard
+                title="Projects - WIP"
+                description="Check out some things I've worked on."
+                route="/projects"
+                />
+
             </Box>
         </Box>
     );

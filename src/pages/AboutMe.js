@@ -1,6 +1,7 @@
 import { Box, Typography, Avatar, Divider, Button} from '@mui/material';
 import { Image } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import './pageFormats.css';
 
 
 export default function AboutMe() {
@@ -32,49 +33,32 @@ export default function AboutMe() {
                 width: '100%',
             }}>
 
-            <Typography fontFamily={'Merriweather'} sx= {{
-                textAlign: 'center',
-                fontSize: '2rem',
-                fontWeight: 750
-            }}>Megan Hacha</Typography>
+            <h1 className='page-title'>Megan Hacha</h1>
 
         {/* Some clarification on last name pronunciation.
             English doesn't tend to favor the k sound when ch is used. */}
-            <Typography fontFamily={'Merriweather'} sx={{
-                textAlign: 'center',
-                fontSize: '1.5rem',
-                fontWeight: 500,
-            }}>'Hack-uh'</Typography>
+            <h2 className='page-subheader'>'Hack-uh'</h2>
 
 
-            <Typography fontFamily={'Karla'} sx={{
-                fontSize: '1rem',
-                padding: '10px',
-                paddingTop: '20px',
-                mt: 5,
-                mb: 10,
-                fontWeight: 450,
-                textAlign: 'center'
-            }}>
-                Hi! I'm Megan, a recent computer science graduate from Purdue Fort Wayne. While I've explored a wide range of topics, I've found myself most at home with web development and lanugages like Python.
+            <h5 className='body-text'>
+                Hi! I'm Megan, a recent computer science graduate from Purdue Fort Wayne. While I've explored a wide range of topics, I've found myself most at home with web development and languages like Python.
                 This site was born out of my desire to deepen my comfort with React, improve my backend skills, and have a space to explore my technical and personal interests. Feel free to click around to see what I've been working on or how I'm spending my free time.
-
+                </h5>
         {/* Using regular html links for now. Steam account link will probably be removed when I realize someone has actually visited the site. */}
-                <div>
-                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://github.com/meganhacha">GitHub</a></p>
-                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://www.linkedin.com/in/megan-hacha/">LinkedIn</a></p>
-                <p fontFamily='Karla' fontSize='1.75' paddingTop='1rem'><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
+                <div style={{textAlign: 'center'}}>
+                <p style={{fontFamily:'Karla', fontSize:'1.75', paddingTop:'1rem'}}><a href="https://github.com/meganhacha">GitHub</a></p>
+                <p style={{fontFamily:'Karla', fontSize:'1.75', paddingTop:'1rem'}}><a href="https://www.linkedin.com/in/megan-hacha/">LinkedIn</a></p>
+                <p style={{fontFamily:'Karla', fontSize:'1.75', paddingTop:'1rem'}}><a href="https://steamcommunity.com/profiles/76561198116395018/">Steam</a></p>
 
         {/* Temporary button location until I can figure out appropriate placement. */}
                 <Button onClick={() => navigate('/')} sx={{
                     backgroundColor: 'rgb(105, 83, 75)',
-                    mt: '3rem',
+                    mt: '2rem',
                     color: 'white'
                 }}>
                     Home
                 </Button>
                 </div>
-            </Typography> 
 
             <Typography fontFamily={'Karla'} sx={{
                 fontSize: '1.25rem',
