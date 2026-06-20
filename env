@@ -1,6 +1,0 @@
-MONGODB_URI=mongodb+srv://meganhacha:g7jTUzNLaU95yV6S@posts.mcogizv.mongodb.net/?appName=posts
-EMAIL_USER=megan.hacha@gmail.com
-NODE_ENV=development
-EMAIL_PASS=wbpbldmiwrvoybhq
-POST_TOKEN=5CURnA39DQ
-REACT_APP_POST_TOKEN=5CURnA39DQ
