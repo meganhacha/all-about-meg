@@ -42,6 +42,9 @@ export default function Blog() {
             setIsAdmin(true);
             window.location.reload();
         }
+        else {
+            console.log("invalid admin");
+        }
     }
 
     { /* Create an array of corresponding posts based on the selected tag or lack thereof. */}

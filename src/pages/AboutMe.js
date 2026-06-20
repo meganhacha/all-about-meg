@@ -83,7 +83,7 @@ export default function AboutMe() {
             }}> Currently Listening To:</Typography>
 
         {/* iframe is provided directly from Spotify */}
-            <iframe src="https://open.spotify.com/embed/playlist/5Xs5JT4xwUyT0vVHthD5xb?utm_source=generator&theme=0" 
+            <iframe src="https://open.spotify.com/embed/playlist/51fXE67jS1awcnhs8QSpa6?utm_source=generator&si=32d3ffcfa7a24db0" 
             width="100%" 
             height="152" 
             allowfullscreen="" 
