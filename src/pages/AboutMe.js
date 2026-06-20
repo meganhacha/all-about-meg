@@ -1,5 +1,4 @@
-import { Box, Typography, Avatar, Divider, Button} from '@mui/material';
-import { Image } from '@mui/icons-material';
+import { Box, Typography, Avatar, Button} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './pageFormats.css';
 

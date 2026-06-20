@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, Typography, Box} from '@mui/material';
+import { Card, CardActionArea, CardContent, Typography} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeCard({title, description, route}) {

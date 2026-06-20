@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useEditor, EditorContent, Editor } from '@tiptap/react';
+import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import '../components/TiptapEditor.css';
 
