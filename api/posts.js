@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       if (token !== process.env.POST_TOKEN) {
         console.warn('Unauthorized POST attempt');
         console.warn('Recevied token:', token);
-        console.warn('Expected token:', process.env.POST_TOKEN);
+        console.warn('Expected token has different value');
         return res.status(403).json({ error: 'Unauthorized' });
       }
 
