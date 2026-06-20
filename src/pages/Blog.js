@@ -13,17 +13,17 @@ export default function Blog() {
     const navigate = useNavigate();
 
     useEffect(() => {
-    {/* Basic fetch for intial page load */}
+    /* Basic fetch for intial page load */
         fetch('/api/posts')
         .then((res) => res.json())
         .then(setPosts);
 
-    {/* If a filter is applied, then fetch those with the corresponding tags. */}
+    /* If a filter is applied, then fetch those with the corresponding tags. */
         fetch('/api/posts?tagsOnly=true')
         .then((res) => res.json())
         .then(setAllTags);
 
-    {/* The current token is checked on page load and verifies admin status. */}
+    /* The current token is checked on page load and verifies admin status. */
         const storedToken = localStorage.getItem('admin-token');
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
 
@@ -37,7 +37,7 @@ export default function Blog() {
     const handleTokenSubmit = () => {
         const expectedToken = process.env.REACT_APP_POST_TOKEN;
 
-    { /* If the token entered matches the one listed as the admin token, the user (me) can post, edit, and delete. */}
+     /* If the token entered matches the one listed as the admin token, the user (me) can post, edit, and delete. */
         if (tokenInput === expectedToken) {
             localStorage.setItem('admin-token', tokenInput);
             setIsAdmin(true);
@@ -48,7 +48,7 @@ export default function Blog() {
         }
     }
 
-    { /* Create an array of corresponding posts based on the selected tag or lack thereof. */}
+    /* Create an array of corresponding posts based on the selected tag or lack thereof. */
     const visiblePosts = selectedTag ? posts.filter((post) => post.tags?.includes(selectedTag)) : posts;
 
     return(
